@@ -27,7 +27,7 @@ class ResultPage extends StatelessWidget {
               const SizedBox(
                 width: 300,
                 height: 200,
-                child: FoxLogo(),
+                child: Hero(tag: 'foxLogo', child: FoxLogo()),
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height / 2,

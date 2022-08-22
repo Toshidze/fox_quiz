@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:flutter/material.dart';
 import 'package:fox_quiz/data/repositories/question_repository_impl.dart';
 import 'package:fox_quiz/domain/models/question/correct_answers_entity/correct_answers_entity.dart';
@@ -17,7 +18,7 @@ class QuestionBloc extends Bloc<QuestionEvent, QuestionState> {
   CorrectAnswers correctAnswers = CorrectAnswers();
   QuestionBloc({required this.questionRepositoryImpl})
       : super(const _Initial()) {
-    on<_Started>(_started);
+    on<_Started>(_started, transformer: sequential());
     on<_SelectQuestion>(_selectQuestion);
     on<_NextPage>(_nextPage);
     on<_RefreshPage>(_refresh);
@@ -44,19 +45,16 @@ class QuestionBloc extends Bloc<QuestionEvent, QuestionState> {
 
   final List<dynamic> _correctAnswersList = [];
   List<bool> _selected = List.generate(7, (index) => false);
-  int? _selectedIndex;
   List<String> checkAnswer = QuizTaskCondition.answers;
   _selectQuestion(_SelectQuestion event, Emitter<QuestionState> emit) async {
     state.mapOrNull(
       succeeded: (value) {
         _selected[event.index] = !_selected[event.index];
-        _selectedIndex = event.index;
 
         switch (event.index) {
           case 0:
             correctAnswers = correctAnswers.copyWith(
                 answerA: _selected[event.index].toString());
-            print(correctAnswers);
             break;
           case 1:
             correctAnswers = correctAnswers.copyWith(
@@ -80,13 +78,12 @@ class QuestionBloc extends Bloc<QuestionEvent, QuestionState> {
                 answerD: _selected[event.index].toString());
             break;
         }
-
+        emit(const _Loading());
         emit(QuestionState.succeeded(
           pageController: value.pageController,
           answer: getCurrenAnswersList(value.fetchQuestion),
           fetchQuestion: value.fetchQuestion,
           checkAnswer: checkAnswer,
-          selectedAnswer: _selectedIndex == event.index,
           selectedAnswerList: _selected,
         ));
       },

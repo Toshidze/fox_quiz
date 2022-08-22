@@ -28,7 +28,7 @@ class _ShowQuestionWidgetState extends State<ShowQuestionWidget> {
         orElse: () => const Center(child: CircularProgressIndicator()),
         loading: () => const Center(child: CircularProgressIndicator()),
         succeeded: (pageController, fetchQuestion, answer, checkAnswers,
-                selectedAnswerList, selectedAnswer) =>
+                selectedAnswerList) =>
             SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -97,7 +97,6 @@ class _ShowQuestionWidgetState extends State<ShowQuestionWidget> {
                                                         .selectQuestion(
                                                             page: page,
                                                             index: index));
-                                                setState(() {});
                                               },
                                               selected: fetchQuestion[page]
                                                           .multipleCorrectAnswers ==
@@ -124,8 +123,6 @@ class _ShowQuestionWidgetState extends State<ShowQuestionWidget> {
                                 onTap: () {
                                   selectedIndex = null;
                                   if (page == fetchQuestion.length - 1) {
-                                    context.read<QuizCubit>().checkAnswer();
-
                                     context.read<QuestionBloc>().add(
                                           QuestionEvent.nextPage(
                                             page: page,
@@ -133,6 +130,7 @@ class _ShowQuestionWidgetState extends State<ShowQuestionWidget> {
                                                 CorrectAnswers(),
                                           ),
                                         );
+                                    context.read<QuizCubit>().checkAnswer();
 
                                     context.go('/');
                                   } else {

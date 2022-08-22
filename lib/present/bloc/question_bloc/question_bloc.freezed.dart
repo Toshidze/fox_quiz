@@ -654,8 +654,7 @@ mixin _$QuestionState {
             List<Question> fetchQuestion,
             List<dynamic> answer,
             List<String> checkAnswer,
-            List<bool>? selectedAnswerList,
-            bool? selectedAnswer)
+            List<bool>? selectedAnswerList)
         succeeded,
     required TResult Function() refresh,
     required TResult Function(String error) failure,
@@ -670,8 +669,7 @@ mixin _$QuestionState {
             List<Question> fetchQuestion,
             List<dynamic> answer,
             List<String> checkAnswer,
-            List<bool>? selectedAnswerList,
-            bool? selectedAnswer)?
+            List<bool>? selectedAnswerList)?
         succeeded,
     TResult Function()? refresh,
     TResult Function(String error)? failure,
@@ -686,8 +684,7 @@ mixin _$QuestionState {
             List<Question> fetchQuestion,
             List<dynamic> answer,
             List<String> checkAnswer,
-            List<bool>? selectedAnswerList,
-            bool? selectedAnswer)?
+            List<bool>? selectedAnswerList)?
         succeeded,
     TResult Function()? refresh,
     TResult Function(String error)? failure,
@@ -787,8 +784,7 @@ class _$_Initial implements _Initial {
             List<Question> fetchQuestion,
             List<dynamic> answer,
             List<String> checkAnswer,
-            List<bool>? selectedAnswerList,
-            bool? selectedAnswer)
+            List<bool>? selectedAnswerList)
         succeeded,
     required TResult Function() refresh,
     required TResult Function(String error) failure,
@@ -806,8 +802,7 @@ class _$_Initial implements _Initial {
             List<Question> fetchQuestion,
             List<dynamic> answer,
             List<String> checkAnswer,
-            List<bool>? selectedAnswerList,
-            bool? selectedAnswer)?
+            List<bool>? selectedAnswerList)?
         succeeded,
     TResult Function()? refresh,
     TResult Function(String error)? failure,
@@ -825,8 +820,7 @@ class _$_Initial implements _Initial {
             List<Question> fetchQuestion,
             List<dynamic> answer,
             List<String> checkAnswer,
-            List<bool>? selectedAnswerList,
-            bool? selectedAnswer)?
+            List<bool>? selectedAnswerList)?
         succeeded,
     TResult Function()? refresh,
     TResult Function(String error)? failure,
@@ -929,8 +923,7 @@ class _$_Loading implements _Loading {
             List<Question> fetchQuestion,
             List<dynamic> answer,
             List<String> checkAnswer,
-            List<bool>? selectedAnswerList,
-            bool? selectedAnswer)
+            List<bool>? selectedAnswerList)
         succeeded,
     required TResult Function() refresh,
     required TResult Function(String error) failure,
@@ -948,8 +941,7 @@ class _$_Loading implements _Loading {
             List<Question> fetchQuestion,
             List<dynamic> answer,
             List<String> checkAnswer,
-            List<bool>? selectedAnswerList,
-            bool? selectedAnswer)?
+            List<bool>? selectedAnswerList)?
         succeeded,
     TResult Function()? refresh,
     TResult Function(String error)? failure,
@@ -967,8 +959,7 @@ class _$_Loading implements _Loading {
             List<Question> fetchQuestion,
             List<dynamic> answer,
             List<String> checkAnswer,
-            List<bool>? selectedAnswerList,
-            bool? selectedAnswer)?
+            List<bool>? selectedAnswerList)?
         succeeded,
     TResult Function()? refresh,
     TResult Function(String error)? failure,
@@ -1035,8 +1026,7 @@ abstract class _$$_SucceededCopyWith<$Res> {
       List<Question> fetchQuestion,
       List<dynamic> answer,
       List<String> checkAnswer,
-      List<bool>? selectedAnswerList,
-      bool? selectedAnswer});
+      List<bool>? selectedAnswerList});
 }
 
 /// @nodoc
@@ -1056,7 +1046,6 @@ class __$$_SucceededCopyWithImpl<$Res> extends _$QuestionStateCopyWithImpl<$Res>
     Object? answer = freezed,
     Object? checkAnswer = freezed,
     Object? selectedAnswerList = freezed,
-    Object? selectedAnswer = freezed,
   }) {
     return _then(_$_Succeeded(
       pageController: pageController == freezed
@@ -1079,10 +1068,6 @@ class __$$_SucceededCopyWithImpl<$Res> extends _$QuestionStateCopyWithImpl<$Res>
           ? _value._selectedAnswerList
           : selectedAnswerList // ignore: cast_nullable_to_non_nullable
               as List<bool>?,
-      selectedAnswer: selectedAnswer == freezed
-          ? _value.selectedAnswer
-          : selectedAnswer // ignore: cast_nullable_to_non_nullable
-              as bool?,
     ));
   }
 }
@@ -1095,8 +1080,7 @@ class _$_Succeeded implements _Succeeded {
       required final List<Question> fetchQuestion,
       required final List<dynamic> answer,
       required final List<String> checkAnswer,
-      final List<bool>? selectedAnswerList,
-      this.selectedAnswer})
+      final List<bool>? selectedAnswerList})
       : _fetchQuestion = fetchQuestion,
         _answer = answer,
         _checkAnswer = checkAnswer,
@@ -1135,11 +1119,8 @@ class _$_Succeeded implements _Succeeded {
   }
 
   @override
-  final bool? selectedAnswer;
-
-  @override
   String toString() {
-    return 'QuestionState.succeeded(pageController: $pageController, fetchQuestion: $fetchQuestion, answer: $answer, checkAnswer: $checkAnswer, selectedAnswerList: $selectedAnswerList, selectedAnswer: $selectedAnswer)';
+    return 'QuestionState.succeeded(pageController: $pageController, fetchQuestion: $fetchQuestion, answer: $answer, checkAnswer: $checkAnswer, selectedAnswerList: $selectedAnswerList)';
   }
 
   @override
@@ -1155,9 +1136,7 @@ class _$_Succeeded implements _Succeeded {
             const DeepCollectionEquality()
                 .equals(other._checkAnswer, _checkAnswer) &&
             const DeepCollectionEquality()
-                .equals(other._selectedAnswerList, _selectedAnswerList) &&
-            const DeepCollectionEquality()
-                .equals(other.selectedAnswer, selectedAnswer));
+                .equals(other._selectedAnswerList, _selectedAnswerList));
   }
 
   @override
@@ -1167,8 +1146,7 @@ class _$_Succeeded implements _Succeeded {
       const DeepCollectionEquality().hash(_fetchQuestion),
       const DeepCollectionEquality().hash(_answer),
       const DeepCollectionEquality().hash(_checkAnswer),
-      const DeepCollectionEquality().hash(_selectedAnswerList),
-      const DeepCollectionEquality().hash(selectedAnswer));
+      const DeepCollectionEquality().hash(_selectedAnswerList));
 
   @JsonKey(ignore: true)
   @override
@@ -1185,14 +1163,13 @@ class _$_Succeeded implements _Succeeded {
             List<Question> fetchQuestion,
             List<dynamic> answer,
             List<String> checkAnswer,
-            List<bool>? selectedAnswerList,
-            bool? selectedAnswer)
+            List<bool>? selectedAnswerList)
         succeeded,
     required TResult Function() refresh,
     required TResult Function(String error) failure,
   }) {
-    return succeeded(pageController, fetchQuestion, answer, checkAnswer,
-        selectedAnswerList, selectedAnswer);
+    return succeeded(
+        pageController, fetchQuestion, answer, checkAnswer, selectedAnswerList);
   }
 
   @override
@@ -1205,14 +1182,13 @@ class _$_Succeeded implements _Succeeded {
             List<Question> fetchQuestion,
             List<dynamic> answer,
             List<String> checkAnswer,
-            List<bool>? selectedAnswerList,
-            bool? selectedAnswer)?
+            List<bool>? selectedAnswerList)?
         succeeded,
     TResult Function()? refresh,
     TResult Function(String error)? failure,
   }) {
-    return succeeded?.call(pageController, fetchQuestion, answer, checkAnswer,
-        selectedAnswerList, selectedAnswer);
+    return succeeded?.call(
+        pageController, fetchQuestion, answer, checkAnswer, selectedAnswerList);
   }
 
   @override
@@ -1225,8 +1201,7 @@ class _$_Succeeded implements _Succeeded {
             List<Question> fetchQuestion,
             List<dynamic> answer,
             List<String> checkAnswer,
-            List<bool>? selectedAnswerList,
-            bool? selectedAnswer)?
+            List<bool>? selectedAnswerList)?
         succeeded,
     TResult Function()? refresh,
     TResult Function(String error)? failure,
@@ -1234,7 +1209,7 @@ class _$_Succeeded implements _Succeeded {
   }) {
     if (succeeded != null) {
       return succeeded(pageController, fetchQuestion, answer, checkAnswer,
-          selectedAnswerList, selectedAnswer);
+          selectedAnswerList);
     }
     return orElse();
   }
@@ -1286,15 +1261,13 @@ abstract class _Succeeded implements QuestionState {
       required final List<Question> fetchQuestion,
       required final List<dynamic> answer,
       required final List<String> checkAnswer,
-      final List<bool>? selectedAnswerList,
-      final bool? selectedAnswer}) = _$_Succeeded;
+      final List<bool>? selectedAnswerList}) = _$_Succeeded;
 
   PageController get pageController;
   List<Question> get fetchQuestion;
   List<dynamic> get answer;
   List<String> get checkAnswer;
   List<bool>? get selectedAnswerList;
-  bool? get selectedAnswer;
   @JsonKey(ignore: true)
   _$$_SucceededCopyWith<_$_Succeeded> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1346,8 +1319,7 @@ class _$_Refresh implements _Refresh {
             List<Question> fetchQuestion,
             List<dynamic> answer,
             List<String> checkAnswer,
-            List<bool>? selectedAnswerList,
-            bool? selectedAnswer)
+            List<bool>? selectedAnswerList)
         succeeded,
     required TResult Function() refresh,
     required TResult Function(String error) failure,
@@ -1365,8 +1337,7 @@ class _$_Refresh implements _Refresh {
             List<Question> fetchQuestion,
             List<dynamic> answer,
             List<String> checkAnswer,
-            List<bool>? selectedAnswerList,
-            bool? selectedAnswer)?
+            List<bool>? selectedAnswerList)?
         succeeded,
     TResult Function()? refresh,
     TResult Function(String error)? failure,
@@ -1384,8 +1355,7 @@ class _$_Refresh implements _Refresh {
             List<Question> fetchQuestion,
             List<dynamic> answer,
             List<String> checkAnswer,
-            List<bool>? selectedAnswerList,
-            bool? selectedAnswer)?
+            List<bool>? selectedAnswerList)?
         succeeded,
     TResult Function()? refresh,
     TResult Function(String error)? failure,
@@ -1512,8 +1482,7 @@ class _$_Failure implements _Failure {
             List<Question> fetchQuestion,
             List<dynamic> answer,
             List<String> checkAnswer,
-            List<bool>? selectedAnswerList,
-            bool? selectedAnswer)
+            List<bool>? selectedAnswerList)
         succeeded,
     required TResult Function() refresh,
     required TResult Function(String error) failure,
@@ -1531,8 +1500,7 @@ class _$_Failure implements _Failure {
             List<Question> fetchQuestion,
             List<dynamic> answer,
             List<String> checkAnswer,
-            List<bool>? selectedAnswerList,
-            bool? selectedAnswer)?
+            List<bool>? selectedAnswerList)?
         succeeded,
     TResult Function()? refresh,
     TResult Function(String error)? failure,
@@ -1550,8 +1518,7 @@ class _$_Failure implements _Failure {
             List<Question> fetchQuestion,
             List<dynamic> answer,
             List<String> checkAnswer,
-            List<bool>? selectedAnswerList,
-            bool? selectedAnswer)?
+            List<bool>? selectedAnswerList)?
         succeeded,
     TResult Function()? refresh,
     TResult Function(String error)? failure,

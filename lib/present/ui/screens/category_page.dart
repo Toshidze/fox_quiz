@@ -18,63 +18,55 @@ class CategoryPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: BlocConsumer<QuestionBloc, QuestionState>(
-          listener: (context, state) {
-            state.mapOrNull(
-                loading: (value) => const Center(
-                      child: CircularProgressIndicator(),
-                    ),
-                succeeded: (value) {
-                  context.go('/question');
-                },
-                failure: (error) => QuizSnackBar().mySnackBar(context, state));
-          },
-          builder: (context, state) {
-            return Padding(
-              padding: const EdgeInsets.all(16),
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: const [
-                        SizedBox(
-                          height: 50,
-                          child: FoxLogo(),
-                        ),
-                        Spacer(),
-                        QuizDropdownWidget()
-                      ],
-                    ),
-                    const Divider(
-                      height: 32,
-                    ),
-                    const QuizCategory(),
-                    const Divider(
-                      height: 32,
-                    ),
+          child: BlocListener<QuestionBloc, QuestionState>(
+        listener: (context, state) {
+          state.mapOrNull(
+              succeeded: (value) => context.go('/question'),
+              failure: (error) => QuizSnackBar().mySnackBar(context, state));
+        },
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: const [
                     SizedBox(
                       height: 50,
-                      width: 200,
-                      child: QuizButton(
-                        onTap: () {
-                          context.read<QuizCubit>()
-                            ..startGame()
-                            ..checkAnswer();
-                          context
-                              .read<QuestionBloc>()
-                              .add(const QuestionEvent.started());
-                        },
-                        text: 'START',
-                      ),
+                      child: FoxLogo(),
                     ),
+                    Spacer(),
+                    QuizDropdownWidget()
                   ],
                 ),
-              ),
-            );
-          },
+                const Divider(
+                  height: 32,
+                ),
+                const QuizCategory(),
+                const Divider(
+                  height: 32,
+                ),
+                SizedBox(
+                  height: 50,
+                  width: 200,
+                  child: QuizButton(
+                    onTap: () {
+                      context.read<QuizCubit>()
+                        ..startGame()
+                        ..checkAnswer();
+                      context
+                          .read<QuestionBloc>()
+                          .add(const QuestionEvent.started());
+                    },
+                    text: 'START',
+                  ),
+                ),
+              ],
+            ),
+          ),
         ),
-      ),
+      )),
     );
   }
 }

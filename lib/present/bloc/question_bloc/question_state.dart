@@ -10,7 +10,6 @@ class QuestionState with _$QuestionState {
     required List<dynamic> answer,
     required List<String> checkAnswer,
     List<bool>? selectedAnswerList,
-    bool? selectedAnswer,
   }) = _Succeeded;
 
   const factory QuestionState.refresh() = _Refresh;

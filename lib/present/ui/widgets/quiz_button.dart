@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fox_quiz/present/bloc/question_bloc/question_bloc.dart';
 
 class QuizButton extends StatelessWidget {
   const QuizButton({
@@ -12,15 +14,20 @@ class QuizButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final stateQuestion = context.watch<QuestionBloc>().state;
     final textTheme = Theme.of(context).textTheme;
     return ElevatedButton(
-      onPressed: () {
-        onTap();
-      },
-      child: Text(
-        text,
-        style: textTheme.button,
-      ),
-    );
+        onPressed: () {
+          onTap();
+        },
+        child: stateQuestion.maybeMap(
+          loading: (value) => const CircularProgressIndicator(
+            color: Colors.white,
+          ),
+          orElse: () => Text(
+            text,
+            style: textTheme.button,
+          ),
+        ));
   }
 }

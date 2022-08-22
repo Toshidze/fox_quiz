@@ -23,6 +23,7 @@ dependencies:
   expandable_page_view: ^1.0.17
   equatable: ^2.0.3
   intl: ^0.17.0
+  bloc_concurrency: ^0.2.0
 
 dev_dependencies:
   flutter_test:

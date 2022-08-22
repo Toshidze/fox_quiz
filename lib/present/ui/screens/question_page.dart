@@ -26,7 +26,10 @@ class QuestionPage extends StatelessWidget {
                 children: [
                   const SizedBox(
                     height: 80,
-                    child: FoxLogo(),
+                    child: Hero(
+                      tag: 'foxLogo',
+                      child: FoxLogo(),
+                    ),
                   ),
                   const SizedBox(
                     height: 16,
