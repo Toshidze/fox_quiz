@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "419193347389",
+    "project_id": "foxquiz-76582",
+    "storage_bucket": "foxquiz-76582.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:419193347389:android:c3a0b065a2968704e37954",
+        "android_client_info": {
+          "package_name": "com.example.fox_quiz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "419193347389-lfsntbdksqvnnbo0ee7e3kn5godapi7l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAA0Qx5eXMzsD-RqO-e-bC0M2VaFBRumg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "419193347389-lfsntbdksqvnnbo0ee7e3kn5godapi7l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
